@@ -127,15 +127,8 @@
 <body>
 
   <h2>Teste Interativo - Engenharia de Software - Aula 6</h2>
-  <h3>Dúvidas? Você pode ver um resumo dessa matéria no final da página!</h3>
+<button onclick="toggleResumo()">Ver Resumo da Matéria</button>
 
-  <div id="quiz"></div>
-
-  <button onclick="checkAnswers()">Verificar Respostas</button>
-  <p id="result"></p>
-
-  <button onclick="toggleResumo()">Ver Resumo da Matéria</button>
-  <button onclick="location.href='aula9.html'">Próximo desafio</button>
 
   <div id="resumo" style="display:none;">
     <h1>Resumo - Aula 6: Análise de Requisitos</h1>
@@ -172,6 +165,15 @@
     <h2>Workshop</h2>
     <p>Atividade em grupo para levantar e apresentar requisitos de sistemas diversos.</p>
   </div>
+  <div id="quiz"></div>
+
+  <button onclick="checkAnswers()">Verificar Respostas</button>
+  <p id="result"></p>
+
+  
+  <button onclick="location.href='aula8.html'">Próximo desafio</button>
+
+  
 
   <script>
     const questions = [
