@@ -2,27 +2,38 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Teste Interativo - Aula 6</title>
   <style>
+    :root {
+      --primary: #007BFF;
+      --background: #f4f4f4;
+      --text: #333;
+    }
+
     body {
       font-family: Arial, sans-serif;
-      background: #f4f4f4;
-      padding: 30px;
-      max-width: 800px;
-      margin: auto;
-      color: #333;
+      background: var(--background);
+      color: var(--text);
+      margin: 0;
+      padding: 20px;
     }
 
     h2, h3 {
       text-align: center;
-      color: #222;
+      margin: 10px 0;
+    }
+
+    #quiz {
+      max-width: 800px;
+      margin: 0 auto;
     }
 
     .question {
-      background: #fff;
-      border-radius: 8px;
+      background: white;
+      border-radius: 10px;
       padding: 15px;
-      margin-bottom: 20px;
+      margin: 15px 0;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
@@ -33,33 +44,34 @@
 
     label {
       display: block;
-      margin: 6px 0;
+      padding: 6px 8px;
+      border-radius: 5px;
+      margin: 5px 0;
+      transition: background 0.2s;
       cursor: pointer;
+    }
+
+    label:hover {
+      background: #eee;
     }
 
     .correct {
       border: 2px solid green;
-      display: inline-block;
-      padding: 2px 6px;
-      border-radius: 3px;
     }
 
     .incorrect {
       border: 2px solid red;
-      display: inline-block;
-      padding: 2px 6px;
-      border-radius: 3px;
     }
 
     button {
-      background: #007BFF;
+      background: var(--primary);
       color: white;
       border: none;
-      padding: 10px 20px;
-      margin: 10px 5px 20px 0;
-      border-radius: 5px;
-      cursor: pointer;
+      padding: 12px 20px;
+      border-radius: 8px;
       font-size: 16px;
+      margin: 10px 5px;
+      cursor: pointer;
     }
 
     button:hover {
@@ -72,22 +84,43 @@
     }
 
     #result {
-      font-size: 18px;
       font-weight: bold;
-      margin-top: 10px;
+      font-size: 18px;
+      text-align: center;
     }
 
     #resumo {
       display: none;
       background: #fff;
       padding: 20px;
-      margin-top: 30px;
+      margin: 30px auto;
       border-radius: 8px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      max-width: 800px;
     }
 
     #resumo h1, #resumo h2 {
+      margin-top: 10px;
       color: #444;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+
+      button {
+        width: 100%;
+        font-size: 15px;
+      }
+
+      .question {
+        padding: 12px;
+      }
+
+      label {
+        font-size: 15px;
+      }
     }
   </style>
 </head>
@@ -106,7 +139,6 @@
 
   <div id="resumo">
     <h1>Resumo - Aula 6: Análise de Requisitos</h1>
-    <h1>Aula 6 - Análise de Requisitos</h1>
 
     <h2>Engenharia de Requisitos</h2>
     <p>É o processo relacionado à descoberta e análise dos requisitos de um sistema.</p>
@@ -116,31 +148,29 @@
 
     <h2>Importância dos Requisitos</h2>
     <p>Os requisitos definem o desempenho, funcionalidades e aspectos de desenvolvimento do sistema. Eles devem ser:</p>
-    <p>- <strong>Claros</strong>: cada requisito deve ser direto e sem ambiguidades.</p>
-    <p>- <strong>Relevantes</strong>: devem refletir necessidades reais.</p>
-    <p>- <strong>Mensuráveis</strong>: devem ser verificáveis com métricas.</p>
-    <p>- <strong>Alcançáveis</strong>: devem ser viáveis técnica, econômica e temporalmente.</p>
+    <ul>
+      <li><strong>Claros</strong>: cada requisito deve ser direto e sem ambiguidades.</li>
+      <li><strong>Relevantes</strong>: devem refletir necessidades reais.</li>
+      <li><strong>Mensuráveis</strong>: devem ser verificáveis com métricas.</li>
+      <li><strong>Alcançáveis</strong>: devem ser viáveis técnica, econômica e temporalmente.</li>
+    </ul>
 
     <h2>Classificação dos Requisitos</h2>
-    <p><strong>Requisitos Funcionais:</strong> descrevem ações que o sistema deve executar.</p>
-    <p>Exemplos:</p>
-    <p>- O sistema deve emitir notas fiscais eletrônicas.</p>
-    <p>- O sistema deve enviar e-mails com as notas fiscais emitidas.</p>
-
-    <p><strong>Requisitos Não Funcionais:</strong> descrevem qualidades do sistema (confiabilidade, tempo de resposta, compatibilidade, segurança, etc.).</p>
+    <p><strong>Requisitos Funcionais:</strong> descrevem ações que o sistema deve executar. Ex.: emitir notas fiscais.</p>
+    <p><strong>Requisitos Não Funcionais:</strong> descrevem qualidades do sistema (ex.: confiabilidade, segurança).</p>
 
     <h2>Tabelas de Requisitos</h2>
-    <p><strong>Requisitos Funcionais:</strong> devem ter código, nome, descrição e categoria (evidente ou oculto).</p>
-    <p><strong>Requisitos Não Funcionais:</strong> devem conter nome, restrição, tipo e obrigatoriedade.</p>
+    <p><strong>Funcionais:</strong> código, nome, descrição, categoria (evidente/oculto).</p>
+    <p><strong>Não Funcionais:</strong> nome, restrição, tipo, obrigatoriedade.</p>
 
     <h2>Estudo de Viabilidade</h2>
-    <p>É um investimento em conhecimento. Deve ser feito com planejamento, ouvindo diferentes pontos de vista, considerando riscos e de forma profissional.</p>
+    <p>Deve ser planejado, ouvir várias opiniões, prever riscos e ser feito com profissionalismo.</p>
 
     <h2>Sustentabilidade</h2>
-    <p>Busca a continuidade dos aspectos econômicos, sociais e ambientais de um sistema após seu desenvolvimento.</p>
+    <p>Continuidade dos aspectos econômicos, sociais e ambientais após o desenvolvimento.</p>
 
     <h2>Workshop</h2>
-    <p>Atividade em grupo para levantar e tabular requisitos de sistemas diversos (drogaria, hospital, faculdade, etc.), com apresentação posterior.</p>
+    <p>Atividade em grupo para levantar e apresentar requisitos de sistemas diversos.</p>
   </div>
 
   <script>
@@ -213,27 +243,22 @@
 
     function checkAnswers() {
       let score = 0;
-
       questions.forEach((q, i) => {
         const radios = document.getElementsByName(`q${i}`);
         radios.forEach((r, j) => {
           const label = r.parentElement;
           label.classList.remove("correct", "incorrect");
-
           if (j === q.answer) {
             label.classList.add("correct");
           }
-
-          if (r.checked) {
-            if (j === q.answer) {
-              score++;
-            } else {
-              label.classList.add("incorrect");
-            }
+          if (r.checked && j !== q.answer) {
+            label.classList.add("incorrect");
+          }
+          if (r.checked && j === q.answer) {
+            score++;
           }
         });
       });
-
       document.getElementById("result").innerHTML = `Você acertou ${score} de ${questions.length} questões.`;
     }
 
@@ -242,6 +267,5 @@
       resumo.style.display = resumo.style.display === "none" ? "block" : "none";
     }
   </script>
-
 </body>
 </html>
