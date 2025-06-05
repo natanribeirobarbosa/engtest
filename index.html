@@ -4,24 +4,90 @@
   <meta charset="UTF-8" />
   <title>Teste Interativo - Aula 6</title>
   <style>
-    body { font-family: Arial; margin: 20px; }
-    .question { margin-bottom: 15px; }
-.correct {
-  border: 2px solid green;
-  display: inline-block;
-  padding: 1px;
-  border-radius: 2px;
-  
-}
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f4f4f4;
+    }
 
-.incorrect {
-  border: 2px solid red;
-  display: inline-block;
-  padding: 1px;
-  border-radius: 2px;
-}
+    h2, h3 {
+      color: #333;
+    }
 
-    #resumo { display: none; background: #f9f9f9; padding: 15px; border: 1px solid #ccc; margin-top: 20px; }
+    .question {
+      margin-bottom: 20px;
+      background: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+
+    .correct {
+      border: 2px solid green;
+      display: inline-block;
+      padding: 2px 4px;
+      border-radius: 4px;
+      background-color: #e0ffe0;
+    }
+
+    .incorrect {
+      border: 2px solid red;
+      display: inline-block;
+      padding: 2px 4px;
+      border-radius: 4px;
+      background-color: #ffe0e0;
+    }
+
+    button {
+      margin-top: 10px;
+      margin-right: 5px;
+      padding: 10px 15px;
+      border: none;
+      background-color: #0055a5;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #003f7f;
+    }
+
+    button a {
+      color: white;
+      text-decoration: none;
+    }
+
+    #resumo {
+      display: none;
+      background: #ffffff;
+      padding: 20px;
+      margin-top: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    #resumo h1 {
+      color: #004080;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 5px;
+    }
+
+    #resumo h2 {
+      color: #006699;
+      margin-top: 20px;
+    }
+
+    #resumo p {
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    #result {
+      font-weight: bold;
+      margin-top: 10px;
+    }
   </style>
 </head>
 <body>
@@ -36,44 +102,43 @@
 
   <button onclick="toggleResumo()">Ver Resumo da Matéria</button>
   <button><a href="aula8.html">Próximo desafio</a></button>
-  <div id="resumo" style="display: none;">
+
+  <div id="resumo">
     <h1>Resumo - Aula 6: Análise de Requisitos</h1>
-<h1>Aula 6 - Análise de Requisitos</h1>
 
-<h2>Engenharia de Requisitos</h2>
-<p>É o processo relacionado à descoberta e análise dos requisitos de um sistema.</p>
+    <h2>Engenharia de Requisitos</h2>
+    <p>É o processo relacionado à descoberta e análise dos requisitos de um sistema.</p>
 
-<h2>O que são Requisitos?</h2>
-<p>São descrições das funções (o que o sistema faz) e restrições (como ele deve ser) de um sistema.</p>
+    <h2>O que são Requisitos?</h2>
+    <p>São descrições das funções (o que o sistema faz) e restrições (como ele deve ser) de um sistema.</p>
 
-<h2>Importância dos Requisitos</h2>
-<p>Os requisitos definem o desempenho, funcionalidades e aspectos de desenvolvimento do sistema. Eles devem ser:</p>
-<p>- <strong>Claros</strong>: cada requisito deve ser direto e sem ambiguidades.</p>
-<p>- <strong>Relevantes</strong>: devem refletir necessidades reais.</p>
-<p>- <strong>Mensuráveis</strong>: devem ser verificáveis com métricas.</p>
-<p>- <strong>Alcançáveis</strong>: devem ser viáveis técnica, econômica e temporalmente.</p>
+    <h2>Importância dos Requisitos</h2>
+    <p>Os requisitos definem o desempenho, funcionalidades e aspectos de desenvolvimento do sistema. Eles devem ser:</p>
+    <p>- <strong>Claros</strong>: cada requisito deve ser direto e sem ambiguidades.</p>
+    <p>- <strong>Relevantes</strong>: devem refletir necessidades reais.</p>
+    <p>- <strong>Mensuráveis</strong>: devem ser verificáveis com métricas.</p>
+    <p>- <strong>Alcançáveis</strong>: devem ser viáveis técnica, econômica e temporalmente.</p>
 
-<h2>Classificação dos Requisitos</h2>
-<p><strong>Requisitos Funcionais:</strong> descrevem ações que o sistema deve executar.</p>
-<p>Exemplos:</p>
-<p>- O sistema deve emitir notas fiscais eletrônicas.</p>
-<p>- O sistema deve enviar e-mails com as notas fiscais emitidas.</p>
+    <h2>Classificação dos Requisitos</h2>
+    <p><strong>Requisitos Funcionais:</strong> descrevem ações que o sistema deve executar.</p>
+    <p>Exemplos:</p>
+    <p>- O sistema deve emitir notas fiscais eletrônicas.</p>
+    <p>- O sistema deve enviar e-mails com as notas fiscais emitidas.</p>
 
-<p><strong>Requisitos Não Funcionais:</strong> descrevem qualidades do sistema (confiabilidade, tempo de resposta, compatibilidade, segurança, etc.).</p>
+    <p><strong>Requisitos Não Funcionais:</strong> descrevem qualidades do sistema (confiabilidade, tempo de resposta, compatibilidade, segurança, etc.).</p>
 
-<h2>Tabelas de Requisitos</h2>
-<p><strong>Requisitos Funcionais:</strong> devem ter código, nome, descrição e categoria (evidente ou oculto).</p>
-<p><strong>Requisitos Não Funcionais:</strong> devem conter nome, restrição, tipo e obrigatoriedade.</p>
+    <h2>Tabelas de Requisitos</h2>
+    <p><strong>Requisitos Funcionais:</strong> devem ter código, nome, descrição e categoria (evidente ou oculto).</p>
+    <p><strong>Requisitos Não Funcionais:</strong> devem conter nome, restrição, tipo e obrigatoriedade.</p>
 
-<h2>Estudo de Viabilidade</h2>
-<p>É um investimento em conhecimento. Deve ser feito com planejamento, ouvindo diferentes pontos de vista, considerando riscos e de forma profissional.</p>
+    <h2>Estudo de Viabilidade</h2>
+    <p>É um investimento em conhecimento. Deve ser feito com planejamento, ouvindo diferentes pontos de vista, considerando riscos e de forma profissional.</p>
 
-<h2>Sustentabilidade</h2>
-<p>Busca a continuidade dos aspectos econômicos, sociais e ambientais de um sistema após seu desenvolvimento.</p>
+    <h2>Sustentabilidade</h2>
+    <p>Busca a continuidade dos aspectos econômicos, sociais e ambientais de um sistema após seu desenvolvimento.</p>
 
-<h2>Workshop</h2>
-<p>Atividade em grupo para levantar e tabular requisitos de sistemas diversos (drogaria, hospital, faculdade, etc.), com apresentação posterior.</p>
-
+    <h2>Workshop</h2>
+    <p>Atividade em grupo para levantar e tabular requisitos de sistemas diversos (drogaria, hospital, faculdade, etc.), com apresentação posterior.</p>
   </div>
 
   <script>
@@ -135,8 +200,8 @@
     questions.forEach((q, i) => {
       const div = document.createElement("div");
       div.className = "question";
-      div.innerHTML = `<p>${q.question}</p>` + q.options.map((opt, j) => `
-        <label >
+      div.innerHTML = `<p><strong>${q.question}</strong></p>` + q.options.map((opt, j) => `
+        <label>
           <input type="radio" name="q${i}" value="${j}">
           ${opt}
         </label><br>
@@ -144,39 +209,37 @@
       quiz.appendChild(div);
     });
 
-function checkAnswers() {
-  let score = 0;
+    function checkAnswers() {
+      let score = 0;
 
-  questions.forEach((q, i) => {
-    const radios = document.getElementsByName(`q${i}`);
-    
-    radios.forEach((r, j) => {
-      const label = r.parentElement;
-      label.classList.remove("correct", "incorrect"); // limpa classes anteriores
+      questions.forEach((q, i) => {
+        const radios = document.getElementsByName(`q${i}`);
 
-      if (j === q.answer) {
-        label.classList.add("correct"); // destaca a correta
-      }
+        radios.forEach((r, j) => {
+          const label = r.parentElement;
+          label.classList.remove("correct", "incorrect");
 
-      if (r.checked) {
-        if (j === q.answer) {
-          score++;
-        } else {
-          label.classList.add("incorrect"); // se errada e selecionada, marca como errada
-        }
-      }
-    });
-  });
+          if (j === q.answer) {
+            label.classList.add("correct");
+          }
 
-  document.getElementById("result").innerHTML = `Você acertou ${score} de ${questions.length} questões.`;
-}
+          if (r.checked) {
+            if (j === q.answer) {
+              score++;
+            } else {
+              label.classList.add("incorrect");
+            }
+          }
+        });
+      });
 
+      document.getElementById("result").innerHTML = `Você acertou ${score} de ${questions.length} questões.`;
+    }
 
     function toggleResumo() {
       const resumo = document.getElementById("resumo");
       resumo.style.display = resumo.style.display === "none" ? "block" : "none";
     }
   </script>
-
 </body>
 </html>
