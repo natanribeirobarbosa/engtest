@@ -136,7 +136,10 @@
       questions.forEach((q, i) => {
         const radios = document.getElementsByName(`q${i}`);
         radios.forEach((r, j) => {
-          if (r.checked && j === q.answer) score++;
+          if (r.checked && j === q.answer) {
+            score++;
+            console.log(r)
+          }
         });
       });
       document.getElementById("result").innerHTML = `Você acertou ${score} de ${questions.length} questões.`;
