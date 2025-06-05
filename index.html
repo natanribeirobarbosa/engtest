@@ -137,6 +137,7 @@
         const radios = document.getElementsByName(`q${i}`);
         radios.forEach((r, j) => {
           console.log(r)
+          r.style.border = "1px solid black"
           if (r.checked && j === q.answer) {
             score++;
                 console.log(r)
