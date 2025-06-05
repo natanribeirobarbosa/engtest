@@ -15,20 +15,62 @@
       padding: 30px;
       border-radius: 10px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      max-width: 700px;
+      max-width: 800px;
       margin: auto;
     }
-    h1 { text-align: center; }
+    h1, h2 {
+      text-align: center;
+    }
     .question { margin-bottom: 20px; }
-    .answers label { display: block; margin: 8px 0; cursor: pointer; }
-    .btn { padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; }
+    .answers label {
+      display: block;
+      margin: 5px 0;
+      cursor: pointer;
+      padding: 5px;
+      border-radius: 4px;
+    }
+    .correct { background-color: #c8f7c5; }
+    .incorrect { background-color: #f7c5c5; }
+    .answer-key {
+      font-weight: bold;
+      color: green;
+    }
+    .btn {
+      padding: 10px 20px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
     .btn:hover { background: #0056b3; }
     .result { font-weight: bold; margin-top: 20px; }
+    .summary {
+      background: #e9ecef;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Aula 8 - Quiz Scrum</h1>
+    <h1>Aula 8 - Metodologia Scrum</h1>
+<button class="btn" id="showSummaryBtn">Mostrar Resumo da Aula</button>
+
+<div class="summary" id="summary" style="display: none;">
+      <h2>Resumo da Aula</h2>
+      <p>Scrum é uma metodologia ágil usada para gerenciar projetos, especialmente de software. Seu foco está em entregar valor de forma incremental e colaborativa.</p>
+      <ul>
+        <li><strong>Sprint:</strong> ciclos de desenvolvimento curtos e fixos (geralmente 1 a 4 semanas).</li>
+        <li><strong>Scrum Master:</strong> facilita o processo, remove impedimentos e ajuda a equipe a seguir os princípios ágeis.</li>
+        <li><strong>Product Owner:</strong> define o que será feito e em qual ordem, gerenciando o backlog do produto.</li>
+        <li><strong>Daily Scrum:</strong> reunião diária curta para alinhar o progresso e obstáculos.</li>
+        <li><strong>Backlog:</strong> lista priorizada de funcionalidades e tarefas do projeto.</li>
+      </ul>
+    </div>
+
     <div id="quiz"></div>
     <div id="result" class="result"></div>
     <button class="btn" id="submit">Enviar Respostas</button>
@@ -141,14 +183,43 @@
 
     document.getElementById("submit").onclick = function () {
       let score = 0;
+
       quizData.forEach((q, i) => {
-        const selected = document.querySelector(`input[name="q${i}"]:checked`);
-        if (selected && parseInt(selected.value) === q.answer) score++;
+        const options = document.getElementsByName(`q${i}`);
+        const labels = document.querySelectorAll(`input[name="q${i}"]`);
+        let userAnswer = -1;
+
+        options.forEach((opt, idx) => {
+          if (opt.checked) userAnswer = parseInt(opt.value);
+        });
+
+        options.forEach((opt, idx) => {
+          const parent = opt.parentElement;
+          parent.classList.remove("correct", "incorrect");
+
+          if (idx === q.answer) {
+            parent.innerHTML += " ✔️";
+          }
+
+          if (userAnswer === q.answer && idx === userAnswer) {
+            parent.classList.add("correct");
+            score++;
+          } else if (idx === userAnswer && userAnswer !== q.answer) {
+            parent.classList.add("incorrect");
+          }
+        });
       });
+
       document.getElementById("result").textContent = `Você acertou ${score} de ${quizData.length} perguntas.`;
       document.getElementById("next").style.display = "inline-block";
       this.disabled = true;
     };
+
+    document.getElementById("showSummaryBtn").onclick = function () {
+  document.getElementById("summary").style.display = "block";
+  this.style.display = "none"; // Esconde o botão depois de mostrar
+};
+
   </script>
 </body>
 </html>
