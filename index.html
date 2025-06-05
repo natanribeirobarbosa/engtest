@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Simulado - Aula 6: Análise de Requisitos</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .question { margin-bottom: 20px; }
+    .result { margin-top: 20px; font-weight: bold; }
+    button { margin-top: 10px; }
+  </style>
+</head>
+<body>
+
+<h1>Simulado – Aula 6: Análise de Requisitos</h1>
+
+<form id="quizForm">
+  <div class="question">
+    <p>1. O que é Engenharia de Requisitos?</p>
+    <input type="radio" name="q1" value="a"> Uma linguagem de programação<br>
+    <input type="radio" name="q1" value="b"> Processo de descobrir e analisar requisitos<br>
+    <input type="radio" name="q1" value="c"> Uma técnica de teste<br>
+  </div>
+
+  <div class="question">
+    <p>2. Qual das opções é um requisito funcional?</p>
+    <input type="radio" name="q2" value="a"> Tempo de resposta<br>
+    <input type="radio" name="q2" value="b"> Gerar nota fiscal eletrônica<br>
+    <input type="radio" name="q2" value="c"> Confiabilidade<br>
+  </div>
+
+  <div class="question">
+    <p>3. Requisitos não funcionais tratam de:</p>
+    <input type="radio" name="q3" value="a"> O que o sistema deve fazer<br>
+    <input type="radio" name="q3" value="b"> Qualidades do sistema<br>
+    <input type="radio" name="q3" value="c"> Erros do usuário<br>
+  </div>
+
+  <div class="question">
+    <p>4. Um requisito funcional oculto é aquele que:</p>
+    <input type="radio" name="q4" value="a"> É realizado internamente sem o usuário perceber<br>
+    <input type="radio" name="q4" value="b"> Está visível na tela do sistema<br>
+    <input type="radio" name="q4" value="c"> Não é documentado<br>
+  </div>
+
+  <div class="question">
+    <p>5. O que significa um requisito mensurável?</p>
+    <input type="radio" name="q5" value="a"> Pode ser apagado<br>
+    <input type="radio" name="q5" value="b"> Pode ser validado com uma métrica<br>
+    <input type="radio" name="q5" value="c"> Não pode ser alterado<br>
+  </div>
+
+  <div class="question">
+    <p>6. Um bom requisito deve ser:</p>
+    <input type="radio" name="q6" value="a"> Vago<br>
+    <input type="radio" name="q6" value="b"> Claro e objetivo<br>
+    <input type="radio" name="q6" value="c"> Subjetivo<br>
+  </div>
+
+  <div class="question">
+    <p>7. Qual é a função de um estudo de viabilidade?</p>
+    <input type="radio" name="q7" value="a"> Reduzir custos<br>
+    <input type="radio" name="q7" value="b"> Investigar se o projeto é possível<br>
+    <input type="radio" name="q7" value="c"> Testar funcionalidades<br>
+  </div>
+
+  <div class="question">
+    <p>8. Sustentabilidade em requisitos significa:</p>
+    <input type="radio" name="q8" value="a"> Uso de energia<br>
+    <input type="radio" name="q8" value="b"> Benefício residual prolongado<br>
+    <input type="radio" name="q8" value="c"> Obsolescência<br>
+  </div>
+
+  <div class="question">
+    <p>9. Um exemplo de requisito não funcional é:</p>
+    <input type="radio" name="q9" value="a"> Cadastrar usuário<br>
+    <input type="radio" name="q9" value="b"> Tempo de resposta de até 2s<br>
+    <input type="radio" name="q9" value="c"> Emitir boleto<br>
+  </div>
+
+  <div class="question">
+    <p>10. O que representa um requisito relevante?</p>
+    <input type="radio" name="q10" value="a"> Requisito repetido<br>
+    <input type="radio" name="q10" value="b"> Necessidade real do projeto<br>
+    <input type="radio" name="q10" value="c"> Requisito que pode ser ignorado<br>
+  </div>
+
+  <button type="button" onclick="checkAnswers()">Enviar Respostas</button>
+</form>
+
+<div class="result" id="result"></div>
+
+<script>
+function checkAnswers() {
+  const correct = {
+    q1: 'b', q2: 'b', q3: 'b', q4: 'a', q5: 'b',
+    q6: 'b', q7: 'b', q8: 'b', q9: 'b', q10: 'b'
+  };
+  let score = 0;
+  for (let i = 1; i <= 10; i++) {
+    const answer = document.querySelector(`input[name="q${i}"]:checked`);
+    if (answer && answer.value === correct[`q${i}`]) {
+      score++;
+    }
+  }
+  document.getElementById('result').innerText = `Você acertou ${score} de 10 perguntas.`;
+}
+</script>
+
+</body>
+</html>
