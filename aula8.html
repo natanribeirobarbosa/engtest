@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aula 8 - Metodologia Scrum</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background: #f5f5f5;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      max-width: 700px;
+      margin: auto;
+    }
+    h1 { text-align: center; }
+    .question { margin-bottom: 20px; }
+    .answers label { display: block; margin: 8px 0; cursor: pointer; }
+    .btn { padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; }
+    .btn:hover { background: #0056b3; }
+    .result { font-weight: bold; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Aula 8 - Quiz Scrum</h1>
+    <div id="quiz"></div>
+    <div id="result" class="result"></div>
+    <button class="btn" id="submit">Enviar Respostas</button>
+    <button class="btn" id="next" style="display:none;" onclick="location.href='aula9.html'">Próxima Aula</button>
+  </div>
+
+  <script>
+    const quizData = [
+      {
+        question: "Quem criou o Scrum?",
+        options: ["Ken Schwaber", "Jeff Sutherland", "Jeff Bezos", "Steve Jobs"],
+        answer: 1
+      },
+      {
+        question: "O que é um Sprint no Scrum?",
+        options: ["Uma corrida de 100m", "Um único objetivo", "Um ciclo de desenvolvimento", "Uma reunião diária"],
+        answer: 2
+      },
+      {
+        question: "Qual o papel do Product Owner?",
+        options: [
+          "Escrever o código",
+          "Liderar a equipe técnica",
+          "Decidir o que será feito e a prioridade",
+          "Participar das reuniões diárias"
+        ],
+        answer: 2
+      },
+      {
+        question: "Qual o objetivo da reunião Daily Scrum?",
+        options: [
+          "Revisar o sprint anterior",
+          "Planejar o sprint",
+          "Apresentar ao cliente",
+          "Discutir impedimentos e priorizar o dia"
+        ],
+        answer: 3
+      },
+      {
+        question: "O que é o Sprint Backlog?",
+        options: [
+          "Lista de funcionalidades completas",
+          "Backlog do produto",
+          "Tarefas selecionadas para o sprint atual",
+          "Lista de bugs"
+        ],
+        answer: 2
+      },
+      {
+        question: "Quantas pessoas devem compor idealmente um time Scrum?",
+        options: ["Até 20", "5 a 10", "Mais de 15", "2 a 3"],
+        answer: 1
+      },
+      {
+        question: "O que é priorizado no Scrum?",
+        options: [
+          "Tudo ao mesmo tempo",
+          "As tarefas com menor tempo de execução",
+          "A tarefa mais cara",
+          "Uma coisa de cada vez, com clareza de prioridade"
+        ],
+        answer: 3
+      },
+      {
+        question: "Por que as reuniões Scrum são feitas em pé?",
+        options: [
+          "Por falta de cadeiras",
+          "Para alongar a equipe",
+          "Para serem mais rápidas e objetivas",
+          "Para motivar o time"
+        ],
+        answer: 2
+      },
+      {
+        question: "Qual o papel do Scrum Master?",
+        options: [
+          "Supervisionar os desenvolvedores",
+          "Cuidar do orçamento",
+          "Facilitar o processo e remover impedimentos",
+          "Aprovar o produto final"
+        ],
+        answer: 2
+      },
+      {
+        question: "O que o Scrum valoriza em sua governança?",
+        options: [
+          "Controle rígido e documentação pesada",
+          "Hierarquia e títulos",
+          "Transparência e acompanhamento visual das tarefas",
+          "Apenas relatórios mensais"
+        ],
+        answer: 2
+      }
+    ];
+
+    const quizContainer = document.getElementById("quiz");
+
+    quizData.forEach((q, index) => {
+      const div = document.createElement("div");
+      div.classList.add("question");
+      div.innerHTML = `<p><strong>${index + 1}. ${q.question}</strong></p>`;
+      q.options.forEach((opt, i) => {
+        div.innerHTML += `
+          <label>
+            <input type="radio" name="q${index}" value="${i}"> ${opt}
+          </label>`;
+      });
+      quizContainer.appendChild(div);
+    });
+
+    document.getElementById("submit").onclick = function () {
+      let score = 0;
+      quizData.forEach((q, i) => {
+        const selected = document.querySelector(`input[name="q${i}"]:checked`);
+        if (selected && parseInt(selected.value) === q.answer) score++;
+      });
+      document.getElementById("result").textContent = `Você acertou ${score} de ${quizData.length} perguntas.`;
+      document.getElementById("next").style.display = "inline-block";
+      this.disabled = true;
+    };
+  </script>
+</body>
+</html>
