@@ -6,51 +6,64 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      margin: 20px;
-      background-color: #f4f4f4;
-    }
-
-    h2, h3 {
+      background: #f4f4f4;
+      padding: 30px;
+      max-width: 800px;
+      margin: auto;
       color: #333;
     }
 
+    h2, h3 {
+      text-align: center;
+      color: #222;
+    }
+
     .question {
-      margin-bottom: 20px;
       background: #fff;
-      padding: 15px;
       border-radius: 8px;
-      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      padding: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .question p {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    label {
+      display: block;
+      margin: 6px 0;
+      cursor: pointer;
     }
 
     .correct {
       border: 2px solid green;
       display: inline-block;
-      padding: 2px 4px;
-      border-radius: 4px;
-      background-color: #e0ffe0;
+      padding: 2px 6px;
+      border-radius: 3px;
     }
 
     .incorrect {
       border: 2px solid red;
       display: inline-block;
-      padding: 2px 4px;
-      border-radius: 4px;
-      background-color: #ffe0e0;
+      padding: 2px 6px;
+      border-radius: 3px;
     }
 
     button {
-      margin-top: 10px;
-      margin-right: 5px;
-      padding: 10px 15px;
-      border: none;
-      background-color: #0055a5;
+      background: #007BFF;
       color: white;
+      border: none;
+      padding: 10px 20px;
+      margin: 10px 5px 20px 0;
       border-radius: 5px;
       cursor: pointer;
+      font-size: 16px;
     }
 
     button:hover {
-      background-color: #003f7f;
+      background: #0056b3;
     }
 
     button a {
@@ -58,35 +71,23 @@
       text-decoration: none;
     }
 
-    #resumo {
-      display: none;
-      background: #ffffff;
-      padding: 20px;
-      margin-top: 20px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    #resumo h1 {
-      color: #004080;
-      border-bottom: 2px solid #ccc;
-      padding-bottom: 5px;
-    }
-
-    #resumo h2 {
-      color: #006699;
-      margin-top: 20px;
-    }
-
-    #resumo p {
-      line-height: 1.6;
-      margin-bottom: 10px;
-    }
-
     #result {
+      font-size: 18px;
       font-weight: bold;
       margin-top: 10px;
+    }
+
+    #resumo {
+      display: none;
+      background: #fff;
+      padding: 20px;
+      margin-top: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    #resumo h1, #resumo h2 {
+      color: #444;
     }
   </style>
 </head>
@@ -105,6 +106,7 @@
 
   <div id="resumo">
     <h1>Resumo - Aula 6: Análise de Requisitos</h1>
+    <h1>Aula 6 - Análise de Requisitos</h1>
 
     <h2>Engenharia de Requisitos</h2>
     <p>É o processo relacionado à descoberta e análise dos requisitos de um sistema.</p>
@@ -200,11 +202,11 @@
     questions.forEach((q, i) => {
       const div = document.createElement("div");
       div.className = "question";
-      div.innerHTML = `<p><strong>${q.question}</strong></p>` + q.options.map((opt, j) => `
+      div.innerHTML = `<p>${q.question}</p>` + q.options.map((opt, j) => `
         <label>
           <input type="radio" name="q${i}" value="${j}">
           ${opt}
-        </label><br>
+        </label>
       `).join('');
       quiz.appendChild(div);
     });
@@ -214,7 +216,6 @@
 
       questions.forEach((q, i) => {
         const radios = document.getElementsByName(`q${i}`);
-
         radios.forEach((r, j) => {
           const label = r.parentElement;
           label.classList.remove("correct", "incorrect");
@@ -241,5 +242,6 @@
       resumo.style.display = resumo.style.display === "none" ? "block" : "none";
     }
   </script>
+
 </body>
 </html>
