@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aula 8 - Metodologia Scrum</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background: #f5f5f5;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      max-width: 800px;
+      margin: auto;
+    }
+    h1, h2 {
+      text-align: center;
+    }
+    .question { margin-bottom: 20px; }
+    .answers label {
+      display: block;
+      margin: 5px 0;
+      cursor: pointer;
+      padding: 5px;
+      border-radius: 4px;
+    }
+    .correct { background-color: #c8f7c5; }
+    .incorrect { background-color: #f7c5c5; }
+    .answer-key {
+      font-weight: bold;
+      color: green;
+    }
+    .btn {
+      padding: 10px 20px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .btn:hover { background: #0056b3; }
+    .result { font-weight: bold; margin-top: 20px; }
+    .summary {
+      background: #e9ecef;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Aula 12 – Diagramas de Classes</h1>
+<button class="btn" id="showSummaryBtn">Mostrar Resumo da Aula</button>
+
+<div id="summary" style="display: none; padding: 20px; background-color: #f9f9f9; border: 1px solid #ccc; border-radius: 5px;">
+<h2>📘 Resumo da Aula 12 – Diagramas de Classes</h2>
+
+<p><strong>Diagrama de Classes</strong> mostra um conjunto de classes e seus relacionamentos, sendo o diagrama central na modelagem orientada a objetos.</p>
+
+<h3>🧩 Elementos do Diagrama de Classes</h3>
+<ul>
+  <li><strong>Classes:</strong> Representadas por retângulos que incluem nome, atributos e métodos.</li>
+  <li><strong>Nomeação:</strong> As classes devem ser nomeadas conforme o vocabulário do domínio do problema, seguindo padrões comuns.</li>
+  <li><strong>Relacionamentos:</strong> Possuem nome (descrição do relacionamento), navegabilidade (indicação por seta), multiplicidade (ex: 0..1, 1..*, *), tipo (associação, agregação, composição, generalização, dependência) e papéis das classes.</li>
+</ul>
+
+<h3>🔗 Tipos de Relacionamentos</h3>
+<ul>
+  <li><strong>Associação:</strong> Relacionamento estrutural que indica que objetos de uma classe estão vinculados a objetos de outra. Representada por linha sólida.</li>
+  <li><strong>Multiplicidade:</strong> Define quantos objetos participam do relacionamento:
+    <ul>
+      <li>1: Exatamente um</li>
+      <li>1..*: Um ou mais</li>
+      <li>0..*: Zero ou mais</li>
+      <li>0..1: Zero ou um</li>
+      <li>m..n: Faixa de valores (exemplo: 4..7)</li>
+    </ul>
+  </li>
+  <li><strong>Agregação:</strong> Tipo especial de associação que indica relação todo-parte, onde um objeto parte pode pertencer a vários objetos todo.</li>
+  <li><strong>Generalização:</strong> Relacionamento entre itens gerais (superclasses) e itens mais específicos (subclasses).</li>
+</ul>
+
+<h3>💡 Exemplos práticos</h3>
+<ul>
+  <li>Cada disciplina deve ser cursada por no mínimo um aluno.</li>
+  <li>Um aluno pode cursar de 0 até 8 disciplinas.</li>
+</ul>
+
+<p>Qualquer dúvida ou problema, contate: alexandre.brunetti@anchieta.br</p>
+
+</div>
+
+
+    <div id="quiz"></div>
+    <div id="result" class="result"></div>
+    <button class="btn" id="submit">Enviar Respostas</button>
+    <button class="btn" id="next" onclick="location.href='aula9.html'">Aula anterior</button>
+        <button class="btn" onclick="location.href='aula11.html'">Próxima Aula</button>
+
+  </div>
+
+  <script>
+    const quizData = [
+  {
+    question: "O que o Diagrama de Classes representa na modelagem orientada a objetos?",
+    options: [
+      "Sequência de passos de um algoritmo",
+      "Um conjunto de classes e seus relacionamentos",
+      "Fluxo de dados entre sistemas",
+      "Interface gráfica do sistema"
+    ],
+    answer: 1
+  },
+  {
+    question: "Como são representadas as classes no Diagrama de Classes?",
+    options: [
+      "Por círculos contendo apenas o nome",
+      "Por retângulos contendo nome, atributos e métodos",
+      "Por linhas pontilhadas",
+      "Por triângulos com setas"
+    ],
+    answer: 1
+  },
+  {
+    question: "Qual é o propósito da multiplicidade em um relacionamento?",
+    options: [
+      "Indicar o número de objetos que participam do relacionamento",
+      "Determinar o nome do relacionamento",
+      "Especificar os métodos da classe",
+      "Mostrar a hierarquia entre classes"
+    ],
+    answer: 0
+  },
+  {
+    question: "O que significa uma associação entre classes?",
+    options: [
+      "Um objeto da classe está vinculado a objetos da outra classe",
+      "As classes são herdadas uma da outra",
+      "Uma classe é composta por outra classe",
+      "As classes são independentes"
+    ],
+    answer: 0
+  },
+  {
+    question: "Qual é a diferença principal entre associação e agregação?",
+    options: [
+      "Associação indica relação todo-parte; agregação é um relacionamento estrutural simples",
+      "Agregação indica relação todo-parte; associação é um relacionamento estrutural simples",
+      "Associação e agregação são a mesma coisa",
+      "Associação indica herança; agregação indica dependência"
+    ],
+    answer: 1
+  },
+  {
+    question: "O que representa a generalização em um Diagrama de Classes?",
+    options: [
+      "Um relacionamento entre classes totalmente independentes",
+      "Um relacionamento entre superclasses e subclasses",
+      "Uma associação com multiplicidade 0..*",
+      "Uma dependência de métodos"
+    ],
+    answer: 1
+  },
+  {
+    question: "Qual das seguintes multiplicidades indica 'zero ou um' objeto?",
+    options: [
+      "1..*",
+      "0..1",
+      "1",
+      "0..*"
+    ],
+    answer: 1
+  },
+  {
+    question: "Qual símbolo indica a navegabilidade em um relacionamento?",
+    options: [
+      "Uma linha tracejada",
+      "Uma linha sólida sem seta",
+      "Uma seta no final do relacionamento",
+      "Um retângulo"
+    ],
+    answer: 2
+  },
+  {
+    question: "Em agregação, um objeto 'parte' pode pertencer a quantos objetos 'todo'?",
+    options: [
+      "Apenas um",
+      "Nenhum",
+      "Vários",
+      "Exatamente dois"
+    ],
+    answer: 2
+  },
+  {
+    question: "O que deve ser considerado ao nomear classes em um Diagrama de Classes?",
+    options: [
+      "Nomes aleatórios para facilitar a modelagem",
+      "O vocabulário do domínio do problema",
+      "Nomes baseados apenas nos atributos",
+      "Nomes baseados em funções do sistema"
+    ],
+    answer: 1
+  }];
+
+    const quizContainer = document.getElementById("quiz");
+
+    quizData.forEach((q, index) => {
+      const div = document.createElement("div");
+      div.classList.add("question");
+      div.innerHTML = `<p><strong>${index + 1}. ${q.question}</strong></p>`;
+      q.options.forEach((opt, i) => {
+        div.innerHTML += `
+          <label>
+            <input type="radio" name="q${index}" value="${i}"> ${opt}
+          </label><br>`;
+      });
+      quizContainer.appendChild(div);
+    });
+
+    document.getElementById("submit").onclick = function () {
+      let score = 0;
+
+      quizData.forEach((q, i) => {
+        const options = document.getElementsByName(`q${i}`);
+        const labels = document.querySelectorAll(`input[name="q${i}"]`);
+        let userAnswer = -1;
+
+        options.forEach((opt, idx) => {
+          if (opt.checked) userAnswer = parseInt(opt.value);
+        });
+
+        options.forEach((opt, idx) => {
+          const parent = opt.parentElement;
+          parent.classList.remove("correct", "incorrect");
+
+          if (idx === q.answer) {
+            parent.innerHTML += " ✔️";
+          }
+
+          if (userAnswer === q.answer && idx === userAnswer) {
+            parent.classList.add("correct");
+            score++;
+          } else if (idx === userAnswer && userAnswer !== q.answer) {
+            parent.classList.add("incorrect");
+          }
+        });
+      });
+
+      document.getElementById("result").textContent = `Você acertou ${score} de ${quizData.length} perguntas.`;
+      document.getElementById("next").style.display = "inline-block";
+      this.disabled = true;
+    };
+
+    document.getElementById("showSummaryBtn").onclick = function () {
+  document.getElementById("summary").style.display = "block";
+  this.style.display = "none"; // Esconde o botão depois de mostrar
+};
+
+  </script>
+</body>
+</html>
