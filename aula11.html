@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aula 11 </title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background: #f5f5f5;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      max-width: 800px;
+      margin: auto;
+    }
+    h1, h2 {
+      text-align: center;
+    }
+    .question { margin-bottom: 20px; }
+    .answers label {
+      display: block;
+      margin: 5px 0;
+      cursor: pointer;
+      padding: 5px;
+      border-radius: 4px;
+    }
+    .correct { background-color: #c8f7c5; }
+    .incorrect { background-color: #f7c5c5; }
+    .answer-key {
+      font-weight: bold;
+      color: green;
+    }
+    .btn {
+      padding: 10px 20px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .btn:hover { background: #0056b3; }
+    .result { font-weight: bold; margin-top: 20px; }
+    .summary {
+      background: #e9ecef;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Aula 11 – UML e Diagramas</h1>
+<button class="btn" id="showSummaryBtn">Mostrar Resumo da Aula</button>
+
+<div id="summary" style="display: none; padding: 20px; background-color: #f9f9f9; border: 1px solid #ccc; border-radius: 5px;">
+<h2>📘 Resumo da Aula 11 – UML e Diagramas</h2> <p><strong>Modelagem</strong> tem como objetivos:</p> <ul> <li>Servir como guia para a construção do sistema;</li> <li>Documentar as decisões tomadas durante o desenvolvimento;</li> <li>Proporcionar uma linguagem comum entre os desenvolvedores.</li> </ul> <h3>🧩 Conceitos de Classes e Herança</h3> <ul> <li><strong>Hierarquia de classes:</strong> Classes com características comuns organizadas em categorias maiores (exemplo: mamíferos > cães e gatos).</li> <li><strong>Classes ancestrais:</strong> Classes das quais outras dependem (pais).</li> <li><strong>Classes descendentes:</strong> Classes originadas a partir de outras (filhos).</li> <li><strong>Herança:</strong> Descendentes herdam atributos e métodos do ancestral automaticamente, sem precisar reescrever.</li> </ul> <h3>🔗 Relação de Associação</h3> <ul> <li>Associação é a ligação entre objetos de classes diferentes.</li> <li>Possui direção de navegação que indica a ordem de leitura da relação.</li> </ul> <h3>💬 Comunicação Entre Objetos</h3> <ul> <li>Feita por meio de <strong>mensagens</strong>, que solicitam serviços entre objetos.</li> <li>Mensagens definem: nome do serviço, informações necessárias (parâmetros) e o requisitante.</li> <li>Exemplo: <code>joao = new cliente;</code> <code>joao.set_cpf(888333222-23);</code></li> </ul> <h3>🖥️ UML – Linguagem de Modelagem Unificada</h3> <ul> <li>Padrão para descrever e documentar projetos de software.</li> <li>Desenvolvida nos anos 1990 por Grady Booch, Jim Rumbaugh e Ivar Jacobson.</li> <li>Ajuda a visualizar, especificar, construir e documentar características do sistema.</li> <li>Assim como arquitetos criam plantas para construções, arquitetos de software criam diagramas UML para o desenvolvimento do sistema.</li> </ul> <h3>🎬 Inspiração e Diagramas UML</h3> <ul> <li>Inspirados em storyboards para facilitar o entendimento do sistema.</li> <li><strong>Diagramas de Casos de Uso</strong>: mostram a relação entre atores (usuários/sistemas) e casos de uso (funcionalidades).</li> </ul> <h3>👥 Atores em UML</h3> <ul> <li>Entidades que interagem com o sistema, podendo ser pessoas ou outros sistemas.</li> <li>Um ator pode desempenhar diferentes papéis no sistema.</li> <li>O sistema é descrito por vários casos de uso executados por atores específicos.</li> </ul> <h3>📊 Fluxo de Eventos em Casos de Uso</h3> <ul> <li><strong>Fluxo básico:</strong> Funcionalidade principal sem desvios.</li> <li><strong>Fluxos alternativos:</strong> Desvios pré-definidos do fluxo básico.</li> <li>Podem ser descritos de forma textual informal, semi-formal (pré/pós-condições), pseudo-código ou combinação destes.</li> </ul> <h3>🔄 Relacionamentos em Casos de Uso</h3> <ul> <li><strong>Generalização:</strong> Especialização de casos de uso, onde os especializados herdam a estrutura do generalizado.</li> <li><strong>Inclusão:</strong> Uso repetido de um caso de uso dentro de outro.</li> <li><strong>Extensão:</strong> Descreve variações no comportamento normal do caso de uso.</li> </ul> <h3>🔍 Como Identificar Atores e Casos de Uso?</h3> <ul> <li><strong>Para encontrar atores:</strong> Quem usa, mantém, inicia, recebe ou fornece informações para o sistema? Que outros sistemas interagem com ele?</li> <li><strong>Para encontrar casos de uso:</strong> Quais funções os atores querem? Que informações são criadas, lidas, atualizadas ou apagadas? Quais eventos externos o sistema precisa reconhecer?</li> </ul> <h3>✅ Conclusão</h3> <p>UML e seus diagramas são ferramentas essenciais para representar e organizar os elementos de um sistema, facilitando a comunicação entre desenvolvedores e a correta construção do software.</p>
+</div>
+
+
+    <div id="quiz"></div>
+    <div id="result" class="result"></div>
+    <button class="btn" id="submit">Enviar Respostas</button>
+    <button class="btn" id="next" onclick="location.href='aula9.html'">Aula anterior</button>
+        <button class="btn" onclick="location.href='aula11.html'">Próxima Aula</button>
+
+  </div>
+
+  <script>
+    const quizData = [
+  {
+    question: "Qual o principal objetivo da modelagem em Engenharia de Software?",
+    options: [
+      "Criar código fonte diretamente",
+      "Guiar a construção do sistema e documentar decisões",
+      "Desenvolver interfaces gráficas",
+      "Fazer testes automatizados"
+    ],
+    answer: 1
+  },
+  {
+    question: "O que significa herança em UML?",
+    options: [
+      "Uma classe copia atributos de outra, mas sem métodos",
+      "Uma classe descendente herda atributos e métodos do ancestral sem reescrever",
+      "Classes não compartilham nada entre si",
+      "Uma classe ancestral herda tudo da descendente"
+    ],
+    answer: 1
+  },
+  {
+    question: "Na hierarquia de classes, o que são classes ancestrais?",
+    options: [
+      "Classes que dependem de outras abaixo dela",
+      "Classes que são originadas a partir de outras",
+      "Classes das quais outras classes descendem e dependem",
+      "Classes que não têm relação com outras"
+    ],
+    answer: 2
+  },
+  {
+    question: "O que define uma relação de associação entre objetos em UML?",
+    options: [
+      "Que um objeto pode ser destruído por outro",
+      "Que objetos de uma classe estão ligados a objetos de outra",
+      "Que dois objetos são iguais",
+      "Que objetos executam funções distintas"
+    ],
+    answer: 1
+  },
+  {
+    question: "O que uma mensagem representa na comunicação entre objetos?",
+    options: [
+      "O nome do serviço requisitado, informações para execução e o requisitante",
+      "A criação de uma nova classe",
+      "Um erro no sistema",
+      "A exclusão de um objeto"
+    ],
+    answer: 0
+  },
+  {
+    question: "Quem são os criadores da UML?",
+    options: [
+      "Bill Gates, Steve Jobs e Mark Zuckerberg",
+      "Grady Booch, Jim Rumbaugh e Ivar Jacobson",
+      "Linus Torvalds, Dennis Ritchie e Ken Thompson",
+      "James Gosling, Bjarne Stroustrup e Guido van Rossum"
+    ],
+    answer: 1
+  },
+  {
+    question: "Qual a finalidade do Diagrama de Casos de Uso?",
+    options: [
+      "Mostrar a estrutura interna de uma classe",
+      "Descrever a relação entre atores e funcionalidades do sistema",
+      "Mostrar o código-fonte do sistema",
+      "Controlar o acesso dos usuários ao banco de dados"
+    ],
+    answer: 1
+  },
+  {
+    question: "Quem pode ser considerado um ator em um Diagrama de Caso de Uso?",
+    options: [
+      "Apenas pessoas físicas",
+      "Qualquer entidade que interaja com o sistema, como pessoas ou outros sistemas",
+      "Só sistemas de hardware",
+      "Somente administradores"
+    ],
+    answer: 1
+  },
+  {
+    question: "O que é um fluxo básico em um caso de uso?",
+    options: [
+      "Um desvio do comportamento normal do sistema",
+      "A funcionalidade principal quando não há desvios",
+      "Um erro detectado no sistema",
+      "Uma funcionalidade extra opcional"
+    ],
+    answer: 1
+  },
+  {
+    question: "Quando deve ser usada a extensão em um caso de uso?",
+    options: [
+      "Para repetir funcionalidades já descritas",
+      "Para descrever uma variação do comportamento normal",
+      "Para descrever o fluxo básico",
+      "Para eliminar funcionalidades desnecessárias"
+    ],
+    answer: 1
+  }
+];
+
+    const quizContainer = document.getElementById("quiz");
+
+    quizData.forEach((q, index) => {
+      const div = document.createElement("div");
+      div.classList.add("question");
+      div.innerHTML = `<p><strong>${index + 1}. ${q.question}</strong></p>`;
+      q.options.forEach((opt, i) => {
+        div.innerHTML += `
+          <label>
+            <input type="radio" name="q${index}" value="${i}"> ${opt}
+          </label><br>`;
+      });
+      quizContainer.appendChild(div);
+    });
+
+    document.getElementById("submit").onclick = function () {
+      let score = 0;
+
+      quizData.forEach((q, i) => {
+        const options = document.getElementsByName(`q${i}`);
+        const labels = document.querySelectorAll(`input[name="q${i}"]`);
+        let userAnswer = -1;
+
+        options.forEach((opt, idx) => {
+          if (opt.checked) userAnswer = parseInt(opt.value);
+        });
+
+        options.forEach((opt, idx) => {
+          const parent = opt.parentElement;
+          parent.classList.remove("correct", "incorrect");
+
+          if (idx === q.answer) {
+            parent.innerHTML += " ✔️";
+          }
+
+          if (userAnswer === q.answer && idx === userAnswer) {
+            parent.classList.add("correct");
+            score++;
+          } else if (idx === userAnswer && userAnswer !== q.answer) {
+            parent.classList.add("incorrect");
+          }
+        });
+      });
+
+      document.getElementById("result").textContent = `Você acertou ${score} de ${quizData.length} perguntas.`;
+      document.getElementById("next").style.display = "inline-block";
+      this.disabled = true;
+    };
+
+    document.getElementById("showSummaryBtn").onclick = function () {
+  document.getElementById("summary").style.display = "block";
+  this.style.display = "none"; // Esconde o botão depois de mostrar
+};
+
+  </script>
+</body>
+</html>
