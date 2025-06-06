@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aula 8 - Metodologia Scrum</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background: #f5f5f5;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      max-width: 800px;
+      margin: auto;
+    }
+    h1, h2 {
+      text-align: center;
+    }
+    .question { margin-bottom: 20px; }
+    .answers label {
+      display: block;
+      margin: 5px 0;
+      cursor: pointer;
+      padding: 5px;
+      border-radius: 4px;
+    }
+    .correct { background-color: #c8f7c5; }
+    .incorrect { background-color: #f7c5c5; }
+    .answer-key {
+      font-weight: bold;
+      color: green;
+    }
+    .btn {
+      padding: 10px 20px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .btn:hover { background: #0056b3; }
+    .result { font-weight: bold; margin-top: 20px; }
+    .summary {
+      background: #e9ecef;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Aula 13 – Design Thinking</h1>
+<button class="btn" id="showSummaryBtn">Mostrar Resumo da Aula</button>
+
+<div id="summary" style="display: none; padding: 20px; background-color: #f9f9f9; border: 1px solid #ccc; border-radius: 5px;">
+<h2>📘 Resumo da Aula 13 – Design Thinking</h2>
+
+<p><strong>Inovação</strong> é uma prioridade nas estratégias das principais empresas, que buscam aumentar sua capacidade de inovar e gerar soluções criativas. O Design Thinking é uma ferramenta essencial para isso, focada no olhar centrado no usuário para resolver problemas.</p>
+
+<h3>🧠 O que é Design Thinking?</h3>
+<ul>
+  <li>Conceito iniciado por Herbert A. Simon em 1969 no livro <em>"The Science of the Artificial"</em>.</li>
+  <li>Popularizado por Tim Brown e David Kelley, que demonstraram sucesso em inovação e melhoria da experiência do usuário.</li>
+  <li>Investir no método traz benefícios como solução eficaz de problemas, desenvolvimento de produtos alinhados às necessidades reais e diferencial competitivo.</li>
+</ul>
+
+<h3>⚙️ Como aplicar o Design Thinking nas empresas?</h3>
+<ul>
+  <li><strong>Empatia:</strong> Colocar-se no lugar do outro, compreendendo contextos e acolhendo outras perspectivas.</li>
+  <li><strong>Colaboração:</strong> Trabalhar em equipes multidisciplinares para potencializar resultados.</li>
+  <li><strong>Experimentação:</strong> Testar soluções na prática, saindo do campo das ideias.</li>
+</ul>
+
+<h3>🔎 Fases do Design Thinking</h3>
+<ul>
+  <li><strong>Entendimento:</strong> Receber o briefing, entender necessidades e desafios dos usuários, coletar dados para definir o problema.</li>
+  <li><strong>Observação:</strong> Analisar com empatia, sair da zona de conforto, usar ferramentas de pesquisa para compreender o problema.</li>
+  <li><strong>Ponto de Vista:</strong> Organizar dados e insights para redefinir o ponto de vista sobre o problema.</li>
+  <li><strong>Ideias e Insights:</strong> Gerar e debater o máximo de propostas para solucionar o problema (brainstorming).</li>
+  <li><strong>Prototipagem:</strong> Criar modelos ou representações das soluções propostas, como maquetes ou protótipos de interface.</li>
+  <li><strong>Testes:</strong> Avaliar a viabilidade das soluções com usuários, coletando feedbacks e sugestões.</li>
+  <li><strong>Iteração:</strong> Ciclo contínuo de aprendizado e aprimoramento das soluções baseado nos feedbacks.</li>
+</ul>
+
+<h3>🏢 Exemplos de uso na indústria</h3>
+<ul>
+  <li><strong>Apple:</strong> Usa o Design Thinking para criar produtos digitais revolucionários centrados no usuário.</li>
+  <li><strong>Airbnb:</strong> Aplicou o método para inovar disruptivamente no setor de hospedagem.</li>
+</ul>
+
+<h3>🚀 Inovar está ao alcance</h3>
+<p>O Design Thinking ajuda a resolver problemas, inovar e transformar a cultura organizacional, estimulando criatividade e colaboração.</p>
+
+<h3>👔 Profissional Chief Innovation Officer (CINO)</h3>
+<ul>
+  <li>Colaborativo e incentivador do trabalho em equipe.</li>
+  <li>Valoriza diversidade em toda a organização.</li>
+  <li>Visão estratégica e expertise em grandes ideias.</li>
+  <li>Curioso e atento às tendências mundiais.</li>
+  <li>Visionário, com foco nos objetivos corporativos.</li>
+  <li>Capacidade de influenciar e motivar desde donos a fornecedores.</li>
+  <li>Ensinando os benefícios da inovação para negócios e funcionários.</li>
+  <li>Prático, equilibrando resolução diária e implementação de ideias promissoras.</li>
+  <li>Orientado para resultados exponenciais.</li>
+</ul>
+
+<h3>📈 Gestão Eficiente</h3>
+<ul>
+  <li>Busca crescimento sustentável, bem-estar da equipe e responsabilidade social.</li>
+  <li>Define metas coerentes, inclui equipe em decisões e foca no público-alvo.</li>
+  <li>Fluxograma organizacional ajuda a estruturar setores e evitar retrabalho.</li>
+  <li>Equipe motivada aumenta produtividade, valorizada por remuneração, benefícios e treinamentos.</li>
+  <li>Indicadores de desempenho permitem mensurar processos e ajustar metas.</li>
+  <li>Networking é fundamental para uma gestão eficaz, conectando profissionais e especialistas.</li>
+</ul>
+
+<p>Qualquer dúvida ou problema, contate: alexandre.brunetti@anchieta.br</p>
+
+</div>
+
+
+    <div id="quiz"></div>
+    <div id="result" class="result"></div>
+    <button class="btn" id="submit">Enviar Respostas</button>
+    <button class="btn" id="next" onclick="location.href='aula9.html'">Aula anterior</button>
+        <button class="btn" onclick="location.href='aula11.html'">Próxima Aula</button>
+
+  </div>
+
+  <script>
+    const quizData = [
+  {
+    question: "O que é Design Thinking e qual seu foco principal?",
+    options: [
+      "Uma técnica para reduzir custos operacionais",
+      "Uma metodologia centrada no usuário para resolver problemas e gerar inovação",
+      "Um método para criar gráficos e diagramas de fluxo",
+      "Uma abordagem para melhorar apenas o marketing"
+    ],
+    answer: 1
+  },
+  {
+    question: "Quem popularizou o método Design Thinking e em qual livro o conceito foi inicialmente trabalhado?",
+    options: [
+      "Herbert A. Simon no livro 'The Science of the Artificial' e popularizado por Tim Brown e David Kelley",
+      "Steve Jobs no livro 'Inovação e Tecnologia'",
+      "Bill Gates no livro 'Estratégias de Negócio'",
+      "Elon Musk no livro 'Design de Engenharia'"
+    ],
+    answer: 0
+  },
+  {
+    question: "Quais são os três fatores fundamentais para aplicar Design Thinking nas empresas?",
+    options: [
+      "Planejamento, Controle e Avaliação",
+      "Empatia, Colaboração e Experimentação",
+      "Pesquisa, Análise de Dados e Gestão",
+      "Marketing, Vendas e Finanças"
+    ],
+    answer: 1
+  },
+  {
+    question: "O que ocorre na fase de Entendimento no Design Thinking?",
+    options: [
+      "Desenvolvimento dos protótipos para testar as ideias",
+      "Recebimento do briefing e definição do problema a ser solucionado",
+      "Brainstorming para gerar o maior número de ideias",
+      "Avaliação dos resultados com os usuários"
+    ],
+    answer: 1
+  },
+  {
+    question: "Qual é a importância da fase de Observação e quais ferramentas podem ser usadas nela?",
+    options: [
+      "É para experimentar e entender melhor o problema, usando ferramentas como planejamento de pesquisa e formulários",
+      "É para realizar vendas e contatos comerciais",
+      "É para medir resultados financeiros com planilhas",
+      "É para criar o design visual do produto"
+    ],
+    answer: 0
+  },
+  {
+    question: "O que acontece na etapa Ponto de Vista dentro do Design Thinking?",
+    options: [
+      "Criação dos protótipos para testar soluções",
+      "Organização e redefinição do ponto de vista a partir dos dados e insights",
+      "Lançamento do produto no mercado",
+      "Treinamento da equipe para implementação"
+    ],
+    answer: 1
+  },
+  {
+    question: "Qual o objetivo da fase de Ideias e Insights e qual ferramenta é bastante usada?",
+    options: [
+      "Validar o produto final; reuniões com investidores",
+      "Gerar o maior número possível de propostas; brainstorming",
+      "Controlar o orçamento do projeto; planilhas financeiras",
+      "Implementar o software; programação em equipe"
+    ],
+    answer: 1
+  },
+  {
+    question: "O que é a Prototipagem no processo de Design Thinking?",
+    options: [
+      "Avaliar se a solução é viável junto aos usuários",
+      "Criar modelos ou representações das soluções propostas, como maquetes ou protótipos de papel",
+      "Organizar os dados e informações do projeto",
+      "Realizar pesquisas de mercado"
+    ],
+    answer: 1
+  },
+  {
+    question: "Por que a Iteração é importante no Design Thinking?",
+    options: [
+      "Porque ajuda a documentar todas as ideias geradas",
+      "Porque permite um ciclo contínuo de aprendizado e aprimoramento com base no feedback dos testes",
+      "Porque elimina a necessidade de protótipos",
+      "Porque reduz o custo do projeto"
+    ],
+    answer: 1
+  },
+  {
+    question: "Cite duas empresas que usam Design Thinking e os benefícios que obtêm com essa metodologia.",
+    options: [
+      "Apple e Airbnb; melhoram a experiência do usuário e criam soluções inovadoras",
+      "Google e Microsoft; aumentam o marketing digital",
+      "Facebook e Twitter; focam em publicidade online",
+      "Amazon e Netflix; ampliam os serviços de streaming"
+    ],
+    answer: 0
+  }
+]
+
+
+    const quizContainer = document.getElementById("quiz");
+
+    quizData.forEach((q, index) => {
+      const div = document.createElement("div");
+      div.classList.add("question");
+      div.innerHTML = `<p><strong>${index + 1}. ${q.question}</strong></p>`;
+      q.options.forEach((opt, i) => {
+        div.innerHTML += `
+          <label>
+            <input type="radio" name="q${index}" value="${i}"> ${opt}
+          </label><br>`;
+      });
+      quizContainer.appendChild(div);
+    });
+
+    document.getElementById("submit").onclick = function () {
+      let score = 0;
+
+      quizData.forEach((q, i) => {
+        const options = document.getElementsByName(`q${i}`);
+        const labels = document.querySelectorAll(`input[name="q${i}"]`);
+        let userAnswer = -1;
+
+        options.forEach((opt, idx) => {
+          if (opt.checked) userAnswer = parseInt(opt.value);
+        });
+
+        options.forEach((opt, idx) => {
+          const parent = opt.parentElement;
+          parent.classList.remove("correct", "incorrect");
+
+          if (idx === q.answer) {
+            parent.innerHTML += " ✔️";
+          }
+
+          if (userAnswer === q.answer && idx === userAnswer) {
+            parent.classList.add("correct");
+            score++;
+          } else if (idx === userAnswer && userAnswer !== q.answer) {
+            parent.classList.add("incorrect");
+          }
+        });
+      });
+
+      document.getElementById("result").textContent = `Você acertou ${score} de ${quizData.length} perguntas.`;
+      document.getElementById("next").style.display = "inline-block";
+      this.disabled = true;
+    };
+
+    document.getElementById("showSummaryBtn").onclick = function () {
+  document.getElementById("summary").style.display = "block";
+  this.style.display = "none"; // Esconde o botão depois de mostrar
+};
+
+  </script>
+</body>
+</html>
